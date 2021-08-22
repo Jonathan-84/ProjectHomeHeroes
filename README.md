@@ -39,8 +39,9 @@
   Please contact us for ideas and suggestions.
 
   ## Contacts
-  GitHub Username: Jonathan-84, brdyherr, CarterSloan, Evan-Wer
-  Email: jonathan.robinson@outlook.com, cartersloan17@gmail.com, brdyherrera@gmail.com, evan.g.werner@gmail.com
+ 
+ ## Version
+ This is project version 2.0. Version 1.0 was a bootcamp group project. During that 2 week project, I successfully built the mySQL backend but my collaborators couldn't successfuly build the front-end. This version 2.0 removes any front-end capability that may have been in place, keeping only thenctional back-end. The Front-end will be built from the ground up. 
   
 
   
