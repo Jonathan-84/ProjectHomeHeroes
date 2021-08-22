@@ -113,7 +113,6 @@ router.put('/:id', (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.name = dbUserData.name;
         req.session.loggedIn = true;
-  
         res.json({ user: dbUserData, message: 'You are now logged in!' });
       });
     });

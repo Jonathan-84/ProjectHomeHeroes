@@ -22,7 +22,7 @@ Tasks.init(
             allowNull: false,
          },
 
-    // This was added after tutoring session- not sure if I need this
+  
       Kids_id: {
       type: DataTypes.INTEGER,
       references: {
