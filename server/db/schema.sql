@@ -21,6 +21,15 @@ CREATE TABLE kids  (
     CONSTRAINT FK_kids FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE rewards  (
+   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    rewards_name VARCHAR(30) NOT NULL,
+    rewards_description VARCHAR(60) NOT NULL,
+    redemption_value INT NOT NULL,
+    users_id INT NOT NULL,
+    CONSTRAINT FK_rewards FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
 CREATE TABLE tasks (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     task_name VARCHAR(30) NOT NULL,

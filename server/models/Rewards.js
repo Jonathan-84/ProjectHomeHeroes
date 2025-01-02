@@ -3,10 +3,10 @@ const sequelize = require('../config/connection');
 
 
 // create our Post model
-class Kids extends Model {
+class Rewards extends Model {
 
 }
-Kids.init(
+Rewards.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -14,19 +14,19 @@ Kids.init(
             primaryKey: true,
             autoIncrement: true
         },
-        child_name: {
+        rewards_name: {
             type: DataTypes.STRING(30),
             allowNull: false,
          },
-         avatar: {
-            type: DataTypes.STRING(75),
+         rewards_description: {
+            type: DataTypes.STRING(60),
             allowNull: false,
          },
-         current_points: {
+         redemption_value: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
          },
-         
+
 /// Add way to tie kids to the specific users { still need to show this somehow}
          users_id: {
                 type: DataTypes.INTEGER,
@@ -39,11 +39,11 @@ Kids.init(
     {
     
         sequelize,
-        modelName: 'kids',
+        modelName: 'rewards',
         freezeTableName: true,
         timestamps: false,
         underscored: true
     
 }
 );
-    module.exports = Kids;
+    module.exports = Rewards;

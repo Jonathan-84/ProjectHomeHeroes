@@ -10,6 +10,12 @@ INSERT INTO  kids (child_name, current_points, users_id)
  ('Jimmy',2000, 0, 2)
 ;
 
+INSERT INTO  rewards (rewards_name,rewards_description, redemption_value, users_id)
+ VALUES ('Amazon GC','$10 Amazon Gift Card',10000, 0, 2),
+ ('Comic','Comic up to $5 value', 2000, 0, 1),
+ ('Rainbow Unicorn','Toy up to $5 value',2000, 0, 2)
+;
+
 INSERT INTO tasks (task_name, task_points,) 
 VALUES ('Take out Trash',10, 1),
 ('Walk Dog',50, 2),

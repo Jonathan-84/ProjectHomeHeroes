@@ -6,6 +6,7 @@ import { UserContext } from "../../util/userContext";
 import { Link } from 'react-router-dom';
 import { destroyTask } from '../../util/API';
 import {Button} from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
 
 function Tasklist(props) {
     const { tasks } = useContext(UserContext);
@@ -67,28 +68,46 @@ const selectedTaskId = (id) => {
 
 
 return (
-    <>
+ 
+    <Table striped bordered hover size="sm">
+<thead>
+<tr>
+<th>Task Name</th>
+<th>Reassign Task</th>
+<th>Delete</th>
+</tr>
+</thead>
+{/* <tbody> */}
+
         {taskList && taskList.length > 0 ? (
 
-  <ul>
-                {taskList.map((task, index) => (
-                    task && task.id ? (
-                        <div key={task.id}>
-                            <li>{task.task_name}</li>
-                            <Button onClick={() => selectedTaskId(task.id)}>Delete</Button>
-                        </div>
-                    ) : (
-                        <li key={index}>Task data is missing</li>
+<tbody>
+                {taskList.map((task) => (
+                        // <div key={task.id}>
+<tr key={task.id}>
+<td>{task.task_name}</td>
+<td>{task.task_name}</td>
+<td><Button className="bg-danger" onClick={() => selectedTaskId(task.id)}>Delete</Button></td>
+</tr>
+// </div>
+
+                        
+                        
                     )
-                ))}
-            </ul>
+                )}
+
+</tbody>
+
+ 
+
         ) : (
             <p className="center">
                 No tasks available. Go here to add some. <br />
                 <Link to="/AddTasks" className="add-padding link-text bold-text">Add Tasks</Link>
             </p>
         )}
-    </>
+
+</Table>   
 );
 
 }

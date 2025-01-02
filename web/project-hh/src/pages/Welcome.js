@@ -14,7 +14,7 @@ import Tasklist from "../Components/Core/tasklist";
 
 const Welcome = () => {
     let me = AuthService.getProfile();
-    const { profile, helpers } = useContext(UserContext);
+    const { profile, helpers, tasks } = useContext(UserContext);
    
     // const [data, setData] = useState(null);
     // const [kids, setKids] = useState([]); // Initialize as an empty array
@@ -52,7 +52,7 @@ const Welcome = () => {
             <p className="text-md-center text-sm-left m-3">{me.data.name}, let's see what your little ones have been up to!</p>
             <Container>
                 <Row>
-                    <Col>
+                    <Col sm={8}>
                         <CardGroup>
                             {helpers ? (
                                 helpers.map((kid) => (
@@ -65,7 +65,7 @@ const Welcome = () => {
                             )}
                         </CardGroup>
                     </Col>
-                    <Col>
+                    <Col sm={3}>
                         <Tasklist />
                     </Col>
                 </Row>
