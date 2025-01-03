@@ -1,38 +1,7 @@
-// previous code
-// import { createContext, useEffect, useState } from "react";
-// import  AuthService from "../util/auth"
-
-// export const UserContext = createContext();
-
-
-// export const UserProvider = ({ children })=> {
-
-//     const [profile, setProfile] = useState('');
-    
-
-//     useEffect(() => {
-//       // Check if the user is logged in (you can adjust the API endpoint)
-//       if (AuthService.loggedIn()){
-//          let user = AuthService.getProfile();
-//           setProfile(user);
-//         } else {
-//           setProfile({});
-//         }
-//       }, []);
-
-
-//   console.log(profile)
-
-//     return (
-//       <UserContext.Provider value={{profile}}>
-//           {children}
-//       </UserContext.Provider>
-//     );
-//   }
 import { createContext, useEffect, useState } from "react";
 import AuthService from "../util/auth";
 // import {getToken} from "../util/auth";
-import { getTasks, getHelpers } from "../util/API"; // Ensure these functions are correctly imported
+import { getTasks, getHelpers,getRewards } from "../util/API"; // Ensure these functions are correctly imported
 
 export const UserContext = createContext();
 
@@ -40,6 +9,8 @@ export const UserProvider = ({ children }) => {
     const [profile, setProfile] = useState({});
     const [tasks, setTasks] = useState([]);
     const [helpers, setHelpers] = useState([]);
+    const [rewards, setRewards] = useState([]);
+    // const [redemptions, setRedemptions] = useState([]);
   
 /// use below code only to test the context
 useEffect(() => {
@@ -64,6 +35,9 @@ useEffect(() => {
   
             const helpersResponse = await getHelpers(user.data.id, idToken); // Fetch helpers
             setHelpers(helpersResponse); // Store helpers
+
+            const rewardsResponse = await getRewards(user.data.id, idToken); // Fetch helpers
+            setRewards(rewardsResponse); // Store helpers
           } catch (error) {
             console.error('Error fetching tasks or helpers:', error);
           }
@@ -75,6 +49,7 @@ useEffect(() => {
         setProfile({});
         setTasks([]);
         setHelpers([]);
+        setRewards([]);
       }
     }
   
@@ -85,9 +60,10 @@ useEffect(() => {
     console.log('Profile:', profile);
     console.log('Tasks:', tasks);
     console.log('Helpers:', helpers);
+    console.log('Rewards:', rewards);
 
     return (
-        <UserContext.Provider value={{ profile, tasks, helpers }}>
+        <UserContext.Provider value={{ profile, tasks, helpers, rewards }}>
             {children}
         </UserContext.Provider>
     );

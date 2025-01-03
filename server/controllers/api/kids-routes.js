@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Kids, Users, Tasks } = require('../../models');
 const { authToken } = require('../../utils/auth');
 
-// GET ALL /api/kids
+// GET ALL /api/brypts
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method)
     Kids.findAll({
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
       });
   });
 
-// GET One KID  /api/kids/1
+// GET One brypt  /api/brypts/1
 router.get('/users/:userId/:id', (req, res) => {
     Kids.findOne({
       where: {
@@ -64,9 +64,9 @@ router.get('/users/:userId/:id', (req, res) => {
       })
       });
 
-// GET ALL KIDS by users /api/kids/1
+// GET ALL bryptS by users /api/brypts/1
 router.get('/users/:userId', (req, res) => {
-  Kids.findAll({
+ Kids.findAll({
     where: {
       // id: req.params.id,
       users_id: req.params.userId
@@ -97,7 +97,7 @@ router.get('/users/:userId', (req, res) => {
     })
     });     
 
-// POST /api/kids
+// POST /api/brypts
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role:"Uncle"}
     Kids.create({
@@ -115,7 +115,7 @@ router.post('/', (req, res) => {
       });
   });
 
-// PUT /api/kids/1
+// PUT /api/brypts/1
 router.put('/:id', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role: 'Uncle'}
   
@@ -138,7 +138,7 @@ router.put('/:id', (req, res) => {
       });
   });
 
-// DELETE /api/kids/1
+// DELETE /api/brypts/1
 router.delete('/:id', (req, res) => {
     Kids.destroy({
       where: {

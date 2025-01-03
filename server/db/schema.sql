@@ -9,7 +9,8 @@ CREATE TABLE users (
     name VARCHAR(30),
     email VARCHAR(30),
     password VARCHAR(75),
-    role VARCHAR(30)
+    reset_code VARCHAR(75),
+    reset_hint VARCHAR(30)
 );
 
 CREATE TABLE kids  (
@@ -29,6 +30,14 @@ CREATE TABLE rewards  (
     users_id INT NOT NULL,
     CONSTRAINT FK_rewards FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+CREATE TABLE redemptions  (
+   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    rewards_redeemed VARCHAR(30) NOT NULL,
+    date_redeemed DATE NOT NULL,
+    kids_id INT NOT NULL,
+);
+
 
 CREATE TABLE tasks (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,

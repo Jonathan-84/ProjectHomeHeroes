@@ -7,6 +7,7 @@ import Signup from '../src/Components/Core/SignupForm';
 import Home from '../src/pages/home'
 import AddHelpers from '../src/Components/AddHelpers';
 import AddTasks from '../src/Components/AddTasks';
+import AddRewards from '../src/Components/AddRewards';
 
 import { Routes, Route } from "react-router-dom";
 import {ProtectedRoute} from './Components/Core/ProtectedRoute'
@@ -46,6 +47,7 @@ function App() {
             <Route path="/Welcome" element={<ProtectedRoute> <Welcome /> </ProtectedRoute> } />
             <Route path="/AddTasks" element={<ProtectedRoute> <AddTasks /> </ProtectedRoute> } />
             <Route path="/AddHelpers" element={<ProtectedRoute> <AddHelpers /> </ProtectedRoute> } />
+            <Route path="/AddRewards" element={<ProtectedRoute> <AddRewards /> </ProtectedRoute> } />
             {/* </UserContext.Provider> */}
             <Route exact path="/login" element={<Login/>} />
         

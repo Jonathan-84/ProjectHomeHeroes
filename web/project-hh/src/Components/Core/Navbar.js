@@ -30,7 +30,7 @@ function AppNavbar(){
                 <>
                
                   <li className='nav-item active'>
-                  <Link to="/Welcome" className="link-text text-dark m-3 font-weight-bold  main-link">Welcome</Link>
+                  <Link to="/Welcome" className="link-text text-dark m-3 font-weight-bold  main-link">Dashboard</Link>
                   </li>
         
                   <br />
@@ -41,6 +41,11 @@ function AppNavbar(){
                   <br />
                   <li className='nav-item active'>
                   <Link to="/AddTasks" className="link-text text-dark m-3 font-weight-bold  main-link">Add Tasks</Link>
+                  </li>
+                  <br />
+                  <br />
+                  <li className='nav-item active'>
+                  <Link to="/AddRewards" className="link-text text-dark m-3 font-weight-bold  main-link">Add Rewards</Link>
                   </li>
                   <br />
                   <li className='nav-item active'>

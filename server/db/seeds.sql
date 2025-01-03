@@ -1,7 +1,7 @@
-INSERT INTO users (name, email, password, role)
+INSERT INTO users (name, email, password, role, reset_code, reset_hint)
 VALUES
-('Walter', 'walter.skinner@hotmail.com', '1234password', 'Parent'),
-('Maria', 'Maria@hotmail.com', 'syndicate123', 'Babysitter')
+('Walter', 'walter.skinner@hotmail.com', '1234password', 'Parent', 123456, "Count to 6"),
+('Maria', 'Maria@hotmail.com', 'syndicate123', 'Babysitter', 123456, "Count to 6"),
 ;
 
 INSERT INTO  kids (child_name, current_points, users_id)
@@ -14,6 +14,12 @@ INSERT INTO  rewards (rewards_name,rewards_description, redemption_value, users_
  VALUES ('Amazon GC','$10 Amazon Gift Card',10000, 0, 2),
  ('Comic','Comic up to $5 value', 2000, 0, 1),
  ('Rainbow Unicorn','Toy up to $5 value',2000, 0, 2)
+;
+
+INSERT INTO  rewards (reward_redeemed date_redeemed, kids_id, delivered)
+ VALUES (1,'Amazon GC',1, 10-18-2024,true),
+ (2, 'Comic', 2, 10-18-2024,false),
+ (3, 'Rainbow Unicorn',3, 10-18-2024,false)
 ;
 
 INSERT INTO tasks (task_name, task_points,) 

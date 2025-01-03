@@ -11,7 +11,7 @@ import { createUser,
 const Signup = () => {
 
     // set initial form state
-    const [userFormData, setUserFormData] = useState({ name: '', email: '', password: '', role: '' });
+    const [userFormData, setUserFormData] = useState({ name: '', email: '', password: '', reset_hint: '' });
     // set state for form validation
     const [validated] = useState(false);
     // set state for alert
@@ -58,7 +58,8 @@ const Signup = () => {
             name: '',
             email: '',
             password: '',
-            role: '',
+            reset_hint: '',
+            reset_token: ''
         });
 
     };
@@ -116,19 +117,33 @@ const Signup = () => {
                 <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
-                <Form.Label htmlFor='role'>Household Role</Form.Label>
+                <Form.Label htmlFor='hint'>Password Reset Hint</Form.Label>
                 <Form.Control
-                    type='role'
-                    placeholder='Your household role'
-                    name='role'
+                    type='reset_hint'
+                    placeholder='Your Password Reset Hint'
+                    name='reset_hint'
                     onChange={handleInputChange}
-                    value={userFormData.role}
+                    value={userFormData.reset_hint}
                     required
                 />
-                <Form.Control.Feedback type='invalid'>Role is required!</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Reset Hint is required!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label htmlFor='reset code'>6 Digit Password Reset Code - available in future Update</Form.Label>
+                <Form.Control
+                    type='reset_code'
+                    placeholder='Your Password Reset Code'
+                    name='reset_code'
+                    onChange={handleInputChange}
+                    maxLength={6}
+                    minLength={6}
+                    value={userFormData.reset_code}
+                    required
+                />
+                <Form.Control.Feedback type='invalid'>Reset Code is required!</Form.Control.Feedback>
             </Form.Group>
             <Button
-            disabled={!(userFormData.name && userFormData.email && userFormData.password && userFormData.role)}
+            disabled={!(userFormData.name && userFormData.email && userFormData.password && userFormData.reset_hint && userFormData.reset_code)}
             type='submit'
             variant='info'>
                 Submit
