@@ -4,16 +4,15 @@
   "description": "",
   "main": "server.js",
   "engines": {
-      "node": "22.x"
-    },
+    "node": "22.x"
+  },
   "scripts": {
-      "test": "echo \"Error: no test speciflsied\" && exit 1",
-      "start": "node server.js",
-      "watch": "nodemon server.js"
+    "test": "echo \"Error: no test speciflsied\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
-  
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.1",
@@ -21,8 +20,8 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.5.0"
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "sequelize": "^6.37.5"
   }
 }
