@@ -2,7 +2,7 @@ const Users = require("./Users");
 const Kids = require("./Kids");
 const Tasks = require("./Tasks");
 const Rewards = require("./Rewards");
-const Redemptions = require("./Redemptions");
+// const Redemptions = require("./Redemptions");
 
 
 //Kids routes are all good
