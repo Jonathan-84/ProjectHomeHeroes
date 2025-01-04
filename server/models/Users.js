@@ -79,7 +79,8 @@ Users.init(
     timestamps: false,
     paranoid: false,
     freezeTableName:true,
-    underscored: true
+    underscored: true,
+    engine: 'InnoDB' // Specify the default engine here
 }
 );
 module.exports = Users;

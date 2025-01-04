@@ -42,7 +42,8 @@ Kids.init(
         modelName: 'kids',
         freezeTableName: true,
         timestamps: false,
-        underscored: true
+        underscored: true,
+        engine: 'InnoDB' // Specify the default engine here
     
 }
 );
