@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS choresDB;
 
 CREATE DATABASE choresDB;
 
+ENGINE=InnoDB;
+
 USE choresDB;
 
 CREATE TABLE users (
