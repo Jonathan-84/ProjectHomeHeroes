@@ -17,6 +17,9 @@
         "type": "git",
         "url": "git@github.com:Jonathan-84/ProjectHomeHeroes.git"
     },
+    "devDependencies": {
+        "concurrently": "^5.2.0"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC"

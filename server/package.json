@@ -1,4 +1,19 @@
 {
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+      "node": "16.x"
+    },
+  "scripts": {
+      "test": "echo \"Error: no test speciflsied\" && exit 1",
+      "start": "node server.js",
+      "watch": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.1",
