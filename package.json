@@ -18,7 +18,8 @@
         "url": "git@github.com:Jonathan-84/ProjectHomeHeroes.git"
     },
     "devDependencies": {
-        "concurrently": "^5.2.0"
+        "concurrently": "^5.2.0",
+        "if-env": "^1.0.4"
     },
     "keywords": [],
     "author": "",
