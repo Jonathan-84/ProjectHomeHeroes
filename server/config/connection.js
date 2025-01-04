@@ -31,3 +31,4 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 module.exports = sequelize;
 
 ///13.1.4 Builind the structure for models
+

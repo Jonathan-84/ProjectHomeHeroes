@@ -17,11 +17,14 @@
         "type": "git",
         "url": "git@github.com:Jonathan-84/ProjectHomeHeroes.git"
     },
-    "devDependencies": {
-        "concurrently": "^5.2.0",
-        "if-env": "^1.0.4"
-    },
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "if-env": "^1.0.4"
+    },
+    "devDependencies": {
+        "concurrently": "^5.2.0"
+    }
+
 }
