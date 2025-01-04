@@ -19,7 +19,7 @@ const AddHelpers =()=> {
 
 
         // set initial form state
-        const [userFormData, setUserFormData] = useState({ child_name: '', avatar: '', current_points: '', users_id: '' });
+        const [userFormData, setUserFormData] = useState({ child_name: '', avatar: '', current_points: '0', users_id: '' });
         // set state for form validation
         const [validated] = useState(false);
         // set state for alert
