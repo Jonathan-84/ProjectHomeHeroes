@@ -7,6 +7,13 @@
   pointer-events: none;
 }
 
+.image-container {
+  width: 100%;
+  text-align: center;
+}
+
+.top-image { max-height: 50vh; /* Set the maximum height to 50% of the viewport height */ width: auto; /* Maintain the aspect ratio */ object-fit: cover; /* Ensure the image covers the container */}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

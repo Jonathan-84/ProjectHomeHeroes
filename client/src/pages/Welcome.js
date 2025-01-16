@@ -60,7 +60,7 @@ const Welcome = () => {
 
     return (
         <>
-            <h1 className="display-4 text-center border-bottom border-warning">Welcome Back</h1>
+            <h1 className="display-4 text-center border-bottom">Welcome Back</h1>
             <p className="text-md-center text-sm-left m-3">{me.data.name}, let's see what your little ones have been up to!</p>
             <Container>
             <Row>
