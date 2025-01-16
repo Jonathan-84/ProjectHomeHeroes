@@ -13,14 +13,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve static files from the React app's build folder
-app.use(express.static(path.join(__dirname, '..', 'client/build')));
-
-// Turn on routes mostly for API endpoints
-app.use(routes);
-
 // Apply authMiddleware
 app.use(authMiddleware);
+
+// Turn on routes mostly for API endpoints
+app.use('/api', routes);
+
+// Serve static files from the React app's build folder
+app.use(express.static(path.join(__dirname, '..', 'client/build')));
 
 // Handle any requests that don’t match the ones above
 app.get('*', (req, res) => {
