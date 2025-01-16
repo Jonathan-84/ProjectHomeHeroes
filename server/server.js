@@ -16,6 +16,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // seems like this is biggest diffeence
 // // Serve static files from the React app's build folder
 // app.use(express.static(path.join(__dirname, '..', 'client/build')));
+// Turn on routes mostly for API endpoints
+app.use(routes);
+
+// // Apply authMiddleware
+app.use(authMiddleware);
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === "production") {
@@ -24,11 +29,7 @@ if (process.env.NODE_ENV === "production") {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
-// Turn on routes mostly for API endpoints
-app.use(routes);
 
-// // Apply authMiddleware
-app.use(authMiddleware);
 
 // // Handle any requests that don’t match the ones above
 // app.get('*', (req, res) => {
