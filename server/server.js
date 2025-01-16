@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(authMiddleware);
 
 // Turn on routes mostly for API endpoints
-app.use('/api', routes);
+app.use( routes);
 
 // Serve static files from the React app's build folder
 app.use(express.static(path.join(__dirname, '..', 'client/build')));
