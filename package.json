@@ -1,5 +1,5 @@
 {
-    "name": "household-heroes",
+    "name": "choregasboard",
     "version": "1.0.0",
     "description": "",
     "main": "server/server.js",
@@ -19,6 +19,7 @@
     },
     "keywords": [],
     "author": "",
+    "homepage": "https://choregasboard-f83ad186ca51.herokuapp.com/",
     "license": "ISC",
     "dependencies": {
         "if-env": "^1.0.4"

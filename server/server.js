@@ -1,4 +1,5 @@
-//builds but only login works
+//this doesn't server up react componently correctly
+//but the backend behaves correctly
 
 var express = require('express');
 const { authMiddleware } = require("./utils/auth");
@@ -21,7 +22,7 @@ app.use(authMiddleware);
 
 
 // // Turn on connection to DB and server
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ alter: false }).then(() => {
   app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 });
 
