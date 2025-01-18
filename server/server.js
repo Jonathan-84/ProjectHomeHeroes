@@ -20,6 +20,10 @@ app.use(routes);
 // // Apply authMiddleware
 app.use(authMiddleware);
 
+// Serve React frontend 
+app.use((req, res) => 
+  { res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
 
 // // Turn on connection to DB and server
 sequelize.sync({ alter: false }).then(() => {
