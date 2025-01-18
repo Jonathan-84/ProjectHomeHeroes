@@ -20,9 +20,12 @@ app.use(authMiddleware);
 app.use(routes);
 
 // Serve React frontend 
-app.use((req, res) => 
-  { res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
-  });
+// app.use((req, res) => 
+//   { res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
+//   });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 // // Turn on connection to DB and server
 sequelize.sync({ alter: false }).then(() => {
