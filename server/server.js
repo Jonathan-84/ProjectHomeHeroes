@@ -14,11 +14,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Turn on routes mostly for API endpoints
-app.use(routes);
-
 // // Apply authMiddleware
 app.use(authMiddleware);
+// Turn on routes mostly for API endpoints
+app.use(routes);
 
 // Serve React frontend 
 app.use((req, res) => 
