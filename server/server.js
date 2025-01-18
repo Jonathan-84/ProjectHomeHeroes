@@ -1,46 +1,41 @@
 //builds but only login works
 
-var express = require('express');
+const express = require('express');
+const path = require('path');
 const { authMiddleware } = require("./utils/auth");
-var app = express();
-var path = require('path');
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
 
+const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Apply authMiddleware for all /api routes
+app.use('./api', authMiddleware);
+
 app.use(express.json());
+// different than the other project
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+//different than other
+// app.use(express.static(path.join(__dirname, 'public')));
 
-// seems like this is biggest diffeence
-// // Serve static files from the React app's build folder
-// app.use(express.static(path.join(__dirname, '..', 'client/build')));
-
-// if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
+
+// Handle any requests that don’t match the above routes
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
-// Turn on routes mostly for API endpoints
-app.use(routes);
 
-// // Apply authMiddleware
-app.use(authMiddleware);
+// Turn on routes for API endpoints
+app.use('./api', routes);
 
-// // Handle any requests that don’t match the ones above
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '..', 'client/build', 'index.html'));
-// });
-
-// // Turn on connection to DB and server
 sequelize.sync({ alter: true }).then(() => {
   app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 });
 
-// works, including locally
+
+// works,  locally only
 // var express = require('express');
 // const { authMiddleware } = require("./utils/auth");
 
