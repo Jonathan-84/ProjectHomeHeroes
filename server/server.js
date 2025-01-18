@@ -21,7 +21,7 @@ app.use(routes);
 
 // Serve React frontend 
 app.use((req, res) => 
-  { res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  { res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
   });
 
 // // Turn on connection to DB and server
