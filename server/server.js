@@ -1,5 +1,6 @@
 //this doesn't server up react componently correctly
 //but the backend behaves correctly
+
 var express = require('express');
 const { authMiddleware } = require("./utils/auth");
 var app = express();
@@ -11,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 // Turn on routes mostly for API endpoints
 app.use(routes);
@@ -19,27 +20,19 @@ app.use(routes);
 // // Apply authMiddleware
 app.use(authMiddleware);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-}
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// app.get('', (req, res) => {
+//   res.json({ message: 'Hello from the server!' });
+// });
 
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../client/build/index.html'));
+});
 
 // // Turn on connection to DB and server
 sequelize.sync({ alter: false }).then(() => {
   app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 });
-
-
-
-// // Serve React frontend 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-// });
-
-
 
 // works, including locally
 // var express = require('express');
