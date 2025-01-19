@@ -100,10 +100,11 @@ app.use(routes);
 app.use(authMiddleware);
 
 // API routes
-app.get('*/*', (req, res) => {
+app.get('/api/*', (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
+// Catch-all route to serve the React app for any other path
 app.get("*", (req, res) => {
   if (isProd || req.headers['x-local-dev']) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
