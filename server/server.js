@@ -2,7 +2,7 @@
 //but the backend behaves correctly
 
 var express = require('express');
-const { authMiddleware } = require("./utils/auth");
+// const { authMiddleware } = require("./utils/auth");
 var app = express();
 var path = require('path');
 const sequelize = require('./config/connection');
@@ -12,10 +12,6 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// // Apply authMiddleware
-app.use('/*',authMiddleware);
-
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 
@@ -28,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 // app.get('', (req, res) => {
 //   res.json({ message: 'Hello from the server!' });
 // });
-console.log(process.env.NODE_ENV)
+
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === "production") {
