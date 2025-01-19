@@ -57,6 +57,7 @@ const sequelize = require('./config/connection');
 const routes = require('./controllers');
 
 const PORT = process.env.PORT || 3001;
+const isProd = process.env.NODE_ENV === 'production';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -67,7 +68,7 @@ app.use(routes);
 
 app.use( authMiddleware);
 
-app.get("*", (req, res) => { if (process.env.NODE_ENV === "production" || req.headers['x-local-dev']) { res.sendFile(path.join(__dirname, "../client/build/index.html")); } else { res.status(404).send('Not found');}});
+app.get("*", (req, res) => { if (isProd|| req.headers['x-local-dev']) { res.sendFile(path.join(__dirname, "../client/build/index.html")); } else { res.status(404).send('Not found');}});
 // turn on connection to db and server
 sequelize.sync({ alter: false  }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
