@@ -100,11 +100,6 @@ app.use(routes);
 
 app.use(authMiddleware);
 
-// API routes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
 // Catch-all route to serve the React app for any other path
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
@@ -114,4 +109,3 @@ app.get("*", (req, res) => {
 sequelize.sync({ alter: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
-
