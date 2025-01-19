@@ -60,17 +60,14 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 // turn on routes
 app.use(routes);
 
 app.use( authMiddleware);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
+app.get("*", (req, res) => { if (process.env.NODE_ENV === "production" || req.headers['x-local-dev']) { res.sendFile(path.join(__dirname, "../client/build/index.html")); } else { res.status(404).send('Not found');}});
 // turn on connection to db and server
 sequelize.sync({ alter: false  }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
