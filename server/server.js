@@ -77,6 +77,7 @@
 // });
 
 // tests below
+// tests below
 var express = require('express');
 const { authMiddleware } = require("./utils/auth");
 var path = require('path');
@@ -106,14 +107,11 @@ app.get('/', (req, res) => {
 
 // Catch-all route to serve the React app for any other path
 app.get("*", (req, res) => {
-  if (isProd || req.headers['x-local-dev']) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-  } else {
-    res.status(404).send('Not found');
-  }
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 // turn on connection to db and server
 sequelize.sync({ alter: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
+
