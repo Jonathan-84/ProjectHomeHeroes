@@ -17,9 +17,10 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 
 
 // // Apply authMiddleware
-// app.use(authMiddleware);
+app.use(authMiddleware);
 
-
+// Turn on routes mostly for API endpoints
+app.use(routes);
 
 // app.get('', (req, res) => {
 //   res.json({ message: 'Hello from the server!' });
@@ -34,8 +35,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-// Turn on routes mostly for API endpoints
-app.use(routes);
 
 app.get("/health", (req, res) => {
   res.status(200).send("Server is healthy!");
