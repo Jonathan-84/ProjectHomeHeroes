@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 
 
@@ -36,6 +36,10 @@ app.get("*", (req, res) => {
 
 // Turn on routes mostly for API endpoints
 app.use(routes);
+
+app.get("/health", (req, res) => {
+  res.status(200).send("Server is healthy!");
+});
 
 
 // // Turn on connection to DB and server
