@@ -15,8 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 
-// Turn on routes mostly for API endpoints
-app.use(routes);
 
 // // Apply authMiddleware
 // app.use(authMiddleware);
@@ -35,6 +33,10 @@ if (process.env.NODE_ENV === "production") {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+
+// Turn on routes mostly for API endpoints
+app.use(routes);
+
 
 // // Turn on connection to DB and server
 sequelize.sync({ alter: false }).then(() => {
