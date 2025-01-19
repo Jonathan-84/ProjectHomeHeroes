@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // // Apply authMiddleware
-app.use(authMiddleware);
+app.use('/*',authMiddleware);
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
