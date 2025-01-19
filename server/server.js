@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 // Turn on routes mostly for API endpoints
 app.use(routes);
 
+// // Apply authMiddleware
+app.use(authMiddleware);
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
