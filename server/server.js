@@ -37,6 +37,10 @@ app.get("*", (req, res) => {
 // Turn on routes mostly for API endpoints
 app.use(routes);
 
+app.get("/health", (req, res) => {
+  res.status(200).send("Server is healthy!");
+});
+
 
 // // Turn on connection to DB and server
 sequelize.sync({ alter: false }).then(() => {
