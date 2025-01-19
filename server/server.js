@@ -12,13 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// Turn on routes mostly for API endpoints
-app.use(routes);
-
-// // Apply authMiddleware
-app.use(authMiddleware);
-
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 
 
@@ -40,8 +34,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-// // Turn on routes mostly for API endpoints
-// app.use(routes);
+// Turn on routes mostly for API endpoints
+app.use(routes);
 
 app.get("/health", (req, res) => {
   res.status(200).send("Server is healthy!");
