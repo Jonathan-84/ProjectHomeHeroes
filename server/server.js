@@ -2,7 +2,7 @@
 //but the backend behaves correctly
 
 var express = require('express');
-const { authMiddleware } = require("./utils/auth");
+// const { authMiddleware } = require("./utils/auth");
 var app = express();
 var path = require('path');
 const sequelize = require('./config/connection');
@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(routes);
 
 // // Apply authMiddleware
-app.use(authMiddleware);
+// app.use(authMiddleware);
 
 
 
