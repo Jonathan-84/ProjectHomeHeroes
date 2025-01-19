@@ -19,7 +19,7 @@
     },
     "keywords": [],
     "author": "",
-    "homepage": "https://choregasboard-f83ad186ca51.herokuapp.com/",
+    "homepage": "https://choregasboard-f83ad186ca51.herokuapp.com",
     "license": "ISC",
     "dependencies": {
         "if-env": "^1.0.4"
