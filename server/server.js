@@ -96,6 +96,7 @@ app.use(authMiddleware);
 
 // Serve static resources differently based on environment 
 if (process.env.NODE_ENV === "production") { 
+  console.log('Production environment detected. Serving static files from the React app build folder.');
   // Serve static files from the React app build folder 
   app.use(express.static(path.join(__dirname, "/client/build"))); 
   // Catch all: Send index.html for any other routes not defined 
@@ -103,6 +104,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "/client/build/index.html")); 
   }); 
 } else { 
+  console.log('Development environment detected. Serving static files from the React app public folder.');
   // Serve the React app's public folder in development (optional) 
   app.use(express.static(path.join(__dirname, "/client/public"))); 
   app.get("*", (req, res) => { 
