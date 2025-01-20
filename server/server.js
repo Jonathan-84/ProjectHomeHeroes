@@ -90,16 +90,26 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../client/public')));
+// app.use(express.static(path.join(__dirname, '../client/public')));
 
 // turn on routes
 app.use(routes);
 
+// Serve static resources differently based on environment 
+if (process.env.NODE_ENV === "production") { 
+// Serve static files from the React app build folder 
+app.use(express.static(path.join(__dirname, "../client/build"))); 
+// Catch all: Send index.html for any other routes not defined 
+app.get("*", (req, res) => { res.sendFile(path.join(__dirname, "../client/build/index.html")); }); } 
+else { // Serve the React app's public folder in development (optional) 
+app.use(express.static(path.join(__dirname, "../client/public"))); 
+app.get("*", (req, res) => { res.sendFile(path.join(__dirname, "../client/public/index.html")); });}
+
 app.use( authMiddleware);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 // turn on connection to db and server
 sequelize.sync({ alter: false  }).then(() => {
