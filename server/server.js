@@ -92,6 +92,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, '../client/public')));
 
+app.use( authMiddleware);
+
 // turn on routes
 app.use(routes);
 
@@ -105,7 +107,7 @@ else { // Serve the React app's public folder in development (optional)
 app.use(express.static(path.join(__dirname, "../client/public"))); 
 app.get("*", (req, res) => { res.sendFile(path.join(__dirname, "../client/public/index.html")); });}
 
-app.use( authMiddleware);
+// app.use( authMiddleware);
 
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "../client/build/index.html"));
