@@ -91,10 +91,11 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(authMiddleware);
 // Turn on routes
 app.use(routes);
 
-app.use(authMiddleware);
+// app.use(authMiddleware);
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
