@@ -110,9 +110,9 @@ if (process.env.NODE_ENV === "production") {
 } else { 
   console.log('Development environment detected. Serving static files from the React app public folder.');
   // Serve the React app's public folder in development (optional) 
-  app.use(express.static(path.join(__dirname, "../../client/public"))); 
+  app.use(express.static(path.join(__dirname, "../client/public"))); 
   app.get("*", (req, res) => { 
-    res.sendFile(path.join(__dirname, "../../client/public/index.html")); 
+    res.sendFile(path.join(__dirname, "../client/public/index.html")); 
   });
 }
 
