@@ -96,7 +96,7 @@ app.use(routes);
 
 app.use(authMiddleware);
 
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Serve static resources differently based on environment 
 if (process.env.NODE_ENV === "production") { 
