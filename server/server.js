@@ -78,25 +78,6 @@
 
 // tests below
 
-var express = require('express');
-const { authMiddleware } = require("./utils/auth");
-
-var app = express();
-var path = require('path');
-const sequelize = require('./config/connection');
-const routes = require('./controllers');
-
-const PORT = process.env.PORT || 3001;
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Turn on routes
-app.use(routes);
-
-app.use(authMiddleware);
-
-app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Serve static resources differently based on environment 
 // if (process.env.NODE_ENV === "production") { 
@@ -116,9 +97,30 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 //   });
 // }
 
+var express = require('express');
+const { authMiddleware } = require("./utils/auth");
+var path = require('path');
+const sequelize = require('./config/connection');
+const routes = require('./controllers');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Turn on auth middleware and routes
+app.use(authMiddleware);
+app.use(routes);
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// Catch all other routes and send the React app
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+
 // Turn on connection to db and server
 sequelize.sync({ alter: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
