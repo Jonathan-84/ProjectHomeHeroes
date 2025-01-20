@@ -77,6 +77,7 @@
 // });
 
 // tests below
+
 var express = require('express');
 const { authMiddleware } = require("./utils/auth");
 
@@ -89,10 +90,12 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
-// Turn on routes
+// // turn on routes
 app.use(routes);
-app.use(authMiddleware);
+
+app.use( authMiddleware);
 
 // Serve static resources differently based on environment 
 if (process.env.NODE_ENV === "production") { 
@@ -112,7 +115,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Turn on connection to db and server
-sequelize.sync({ alter: false }).then(() => {
+// // turn on connection to db and server
+sequelize.sync({ alter: false  }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
