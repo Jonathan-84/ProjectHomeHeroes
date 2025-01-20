@@ -92,10 +92,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, '../client/public')));
 
-app.use( authMiddleware);
+
 
 // turn on routes
 app.use(routes);
+app.use( authMiddleware);
 
 // Serve static resources differently based on environment 
 if (process.env.NODE_ENV === "production") { 
