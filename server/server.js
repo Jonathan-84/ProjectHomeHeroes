@@ -111,9 +111,10 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../client/build')));
 
+app.use(routes);
 // Turn on auth middleware and routes
 app.use(authMiddleware);
-app.use(routes);
+// app.use(routes);
 
 
 // Catch all other routes and send the React app
