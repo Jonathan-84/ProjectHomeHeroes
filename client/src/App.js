@@ -8,8 +8,8 @@ import Home from '../src/pages/home'
 import AddHelpers from '../src/Components/AddHelpers';
 import AddTasks from '../src/Components/AddTasks';
 import AddRewards from '../src/Components/AddRewards';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-// import { Routes, Route, Router} from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
 import {ProtectedRoute} from './Components/Core/ProtectedRoute'
 import { UserProvider } from "../src/util/userContext.js";
 // import AuthService from './util/auth';
@@ -38,7 +38,6 @@ function App() {
    
 
       <>
-      <Router>
        <UserProvider>
       <Navbar />
         <Routes>
@@ -55,7 +54,6 @@ function App() {
   <Route render={() => <h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
           </Routes>
           </UserProvider>
-          </Router>
       </>
 
   );
