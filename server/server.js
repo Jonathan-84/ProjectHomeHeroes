@@ -109,7 +109,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../../client/build')));
 
 app.use(routes);
 // Turn on auth middleware and routes
@@ -119,7 +119,7 @@ app.use(authMiddleware);
 
 // Catch all other routes and send the React app
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../../client/build/index.html"));
 });
 
 // Turn on connection to db and server
