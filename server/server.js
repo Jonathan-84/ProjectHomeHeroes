@@ -101,7 +101,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authMiddleware);
 
 // API routes 
-app.use("/api", routes); 
+app.use(routes); 
 // Serve static resources differently based on environment 
 if (process.env.NODE_ENV === "production") { 
   // Serve static files from the React app build folder 
