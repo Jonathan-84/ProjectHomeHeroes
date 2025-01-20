@@ -49,7 +49,8 @@ router.get('/login', (req, res) => {
 
 // Define other routes
 router.get('/', (req, res) => {
-  res.json({ message: "Welcome to the API!" });
+  // res.json({ message: "Welcome to the API!" });
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 module.exports = router;
