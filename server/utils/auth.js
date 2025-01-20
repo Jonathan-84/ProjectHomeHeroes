@@ -4,7 +4,7 @@ const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
 module.exports = {
-  authMiddleware: function({ req }) {
+  authMiddleware: function(req, res, next) {
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
 
@@ -17,7 +17,7 @@ module.exports = {
     }
 
     if (!token) {
-      return req;
+      return next();
     }
 
     try {
@@ -27,7 +27,7 @@ module.exports = {
       console.log('Invalid token');
     }
 
-    return req;
+    return next();
   },
   signToken: function({ name, email, id, role, reset_hint, reset_code }) {
     const payload = { name, email, id, role, reset_hint, reset_code };
