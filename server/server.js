@@ -96,6 +96,8 @@ app.use(routes);
 
 app.use(authMiddleware);
 
+app.use(express.static(path.join(__dirname, '../client/public')));
+
 // Serve static resources differently based on environment 
 if (process.env.NODE_ENV === "production") { 
   console.log('Production environment detected. Serving static files from the React app build folder.');
