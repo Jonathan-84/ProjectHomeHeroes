@@ -120,9 +120,10 @@ app.use(routes);
 
 
 // Catch all other routes and send the React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
+app.get('*', (req, res) => { res.sendFile(path.join(__dirname, '../client/build', 'index.html')); });
 
 // Turn on connection to db and server
 sequelize.sync({ alter: false }).then(() => {
