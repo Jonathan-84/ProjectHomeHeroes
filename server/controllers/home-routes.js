@@ -44,13 +44,13 @@ const path = require('path');
 
 // Define the /login route
 router.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../../client/build/index.html"));
 });
 
 // Define other routes
 router.get('/', (req, res) => {
   // res.json({ message: "Welcome to the API!" });
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../../client/build/index.html"));
 });
 
 module.exports = router;
