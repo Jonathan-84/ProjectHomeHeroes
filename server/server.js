@@ -99,23 +99,26 @@ app.use(authMiddleware);
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Serve static resources differently based on environment 
-if (process.env.NODE_ENV === "production") { 
-  console.log('Production environment detected. Serving static files from the React app build folder.');
-  // Serve static files from the React app build folder 
-  app.use(express.static(path.join(__dirname, "../client/build"))); 
-  // Catch all: Send index.html for any other routes not defined 
-  app.get("*", (req, res) => { 
-    res.sendFile(path.join(__dirname, "../client/build/index.html")); 
-  }); 
-} else { 
-  console.log('Development environment detected. Serving static files from the React app public folder.');
-  // Serve the React app's public folder in development (optional) 
-  app.use(express.static(path.join(__dirname, "../client/public"))); 
-  app.get("*", (req, res) => { 
-    res.sendFile(path.join(__dirname, "../client/public/index.html")); 
-  });
-}
+// if (process.env.NODE_ENV === "production") { 
+//   console.log('Production environment detected. Serving static files from the React app build folder.');
+//   // Serve static files from the React app build folder 
+//   app.use(express.static(path.join(__dirname, "../client/build"))); 
+//   // Catch all: Send index.html for any other routes not defined 
+//   app.get("*", (req, res) => { 
+//     res.sendFile(path.join(__dirname, "../client/build/index.html")); 
+//   }); 
+// } else { 
+//   console.log('Development environment detected. Serving static files from the React app public folder.');
+//   // Serve the React app's public folder in development (optional) 
+//   app.use(express.static(path.join(__dirname, "../client/public"))); 
+//   app.get("*", (req, res) => { 
+//     res.sendFile(path.join(__dirname, "../client/public/index.html")); 
+//   });
+// }
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 // Turn on connection to db and server
 sequelize.sync({ alter: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
