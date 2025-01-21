@@ -12,48 +12,34 @@ import AddRewards from '../src/Components/AddRewards';
 import { Routes, Route } from "react-router-dom";
 import {ProtectedRoute} from './Components/Core/ProtectedRoute'
 import { UserProvider } from "../src/util/userContext.js";
-// import AuthService from './util/auth';
 
 
 
 
 function App() {
 
-//   const [userDetails, setUserDetails] = useState('')
-//   // const UserContext = createContext(userDetails);
-
-// if (AuthService.loggedIn()){
-//   let me = AuthService.getProfile();
-//   // console.log(me)a
-//   setUserDetails(me)
-
-// // }
-// else {
-//   console.log('you are not logged in and cannot add helpers')
-// }
-
-  
-
   return (
    
 
       <>
-       <UserProvider>
+       {/* <UserProvider> */}
       <Navbar />
         <Routes>
+        <UserProvider>
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/SignUp" element={<Signup/>}/>
-            {/* <UserContext.Provider value={{userDetails}}> */}
+           
             <Route exact path="/Welcome" element={<ProtectedRoute> <Welcome /> </ProtectedRoute> } />
             <Route exact path="/AddTasks" element={<ProtectedRoute> <AddTasks /> </ProtectedRoute> } />
             <Route exact path="/AddHelpers" element={<ProtectedRoute> <AddHelpers /> </ProtectedRoute> } />
             <Route exact path="/AddRewards" element={<ProtectedRoute> <AddRewards /> </ProtectedRoute> } />
-            {/* </UserContext.Provider> */}
+        
             <Route exact path="/login" element={<Login/>} />
         
             <Route path="*" element={<h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
+            </UserProvider>
           </Routes>
-          </UserProvider>
+          {/* </UserProvider> */}
       </>
 
   );
