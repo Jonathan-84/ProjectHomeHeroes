@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import Auth from '../../util/auth';
 import {Container,NavDropdown, Nav, Navbar} from 'react-bootstrap';
@@ -38,7 +38,7 @@ function AppNavbar(){
          ) : (
           <>
           <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/Signup">Sign Up</Nav.Link>
+          <Nav.Link href="/SignUp">Sign Up</Nav.Link>
           </>
 
         )}
