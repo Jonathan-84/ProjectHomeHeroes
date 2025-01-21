@@ -1,16 +1,16 @@
 import React from "react";
 import './App.css';
-import Login from '../src/Components/Core/LoginForm'
-import Navbar from '../src/Components/Core/Navbar'
-import Welcome from '../src/pages/Welcome'
-import Signup from '../src/Components/Core/SignupForm';
-import Home from '../src/pages/home'
-import AddHelpers from '../src/Components/AddHelpers';
-import AddTasks from '../src/Components/AddTasks';
-import AddRewards from '../src/Components/AddRewards';
+import Login from '../src/Components/Core/LoginForm.js'
+import Navbar from '../src/Components/Core/Navbar.js'
+import Welcome from '../src/pages/Welcome.js'
+import Signup from '../src/Components/Core/SignupForm.js';
+import Home from '../src/pages/home.js'
+import AddHelpers from '../src/Components/AddHelpers.js';
+import AddTasks from '../src/Components/AddTasks.js';
+import AddRewards from '../src/Components/AddRewards.js';
 
 import { Routes, Route } from "react-router-dom";
-import {ProtectedRoute} from './Components/Core/ProtectedRoute'
+import {ProtectedRoute} from './Components/Core/ProtectedRoute.js'
 import { UserProvider } from "../src/util/userContext.js";
 
 
