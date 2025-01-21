@@ -44,10 +44,10 @@ function App() {
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/SignUp" element={<Signup/>}/>
             {/* <UserContext.Provider value={{userDetails}}> */}
-            <Route path="/Welcome" element={<ProtectedRoute> <Welcome /> </ProtectedRoute> } />
-            <Route path="/AddTasks" element={<ProtectedRoute> <AddTasks /> </ProtectedRoute> } />
-            <Route path="/AddHelpers" element={<ProtectedRoute> <AddHelpers /> </ProtectedRoute> } />
-            <Route path="/AddRewards" element={<ProtectedRoute> <AddRewards /> </ProtectedRoute> } />
+            <Route exact path="/Welcome" element={<ProtectedRoute> <Welcome /> </ProtectedRoute> } />
+            <Route exact path="/AddTasks" element={<ProtectedRoute> <AddTasks /> </ProtectedRoute> } />
+            <Route exact path="/AddHelpers" element={<ProtectedRoute> <AddHelpers /> </ProtectedRoute> } />
+            <Route exact path="/AddRewards" element={<ProtectedRoute> <AddRewards /> </ProtectedRoute> } />
             {/* </UserContext.Provider> */}
             <Route exact path="/login" element={<Login/>} />
         

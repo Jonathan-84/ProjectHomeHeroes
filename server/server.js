@@ -124,8 +124,9 @@ app.use(routes);
 //   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 // });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
+
 
 
 // Turn on connection to db and server
