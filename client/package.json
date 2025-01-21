@@ -1,7 +1,7 @@
 {
   "name": "choregasboard",
   "version": "0.1.0",
-  "homepage": "https://choregasboard-f83ad186ca51.herokuapp.com/",
+  "homepage": ".",
   "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
@@ -36,7 +36,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": [
