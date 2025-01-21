@@ -51,7 +51,7 @@ function App() {
             {/* </UserContext.Provider> */}
             <Route exact path="/login" element={<Login/>} />
         
-  <Route render={() => <h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
+            <Route path="*" element={<h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
           </Routes>
           </UserProvider>
       </>
