@@ -24,8 +24,9 @@ function App() {
       <>
        {/* <UserProvider> */}
       <Navbar />
+      <UserProvider>
         <Routes>
-        <UserProvider>
+    
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/SignUp" element={<Signup/>}/>
            
@@ -37,9 +38,8 @@ function App() {
             <Route exact path="/login" element={<Login/>} />
         
             <Route path="*" element={<h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
-            </UserProvider>
           </Routes>
-          {/* </UserProvider> */}
+          </UserProvider>
       </>
 
   );
