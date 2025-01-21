@@ -39,19 +39,23 @@
 
 // module.exports = router;
 
-const router = require('express').Router();
-const path = require('path');
+// const router = require('express').Router();
+// const path = require('path');
+
+///try to change the routes to stop confusing the files...
+// don't haev the /login on the backend and make sure that the front end uses an
+// api/login or similar path
 
 // Define the /login route
-router.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, "../../client/build/index.html"));
-});
+// router.get('/login', (req, res) => {
+//   res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+// });
 
-// Define other routes
-router.get('/', (req, res) => {
-  // res.json({ message: "Welcome to the API!" });
-  res.sendFile(path.join(__dirname, "../../client/build/index.html"));
-});
+// // Define other routes
+// router.get('/', (req, res) => {
+//   // res.json({ message: "Welcome to the API!" });
+//   res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+// });
 
 module.exports = router;
 
