@@ -1,7 +1,7 @@
 {
   "name": "choregasboard",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "https://choregasboard-f83ad186ca51.herokuapp.com/",
   "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
