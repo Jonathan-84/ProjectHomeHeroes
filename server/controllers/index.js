@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const apiRoutes = require('./api');
 
-// Use API routes with a prefix
-router.use('/api', apiRoutes);
+// Use API routes with a prefix - original
+// router.use('/api', apiRoutes);
+//testing recommedned changes
+router.use(apiRoutes);
 
 // Fallback for 404 errors
 router.use((req, res) => {

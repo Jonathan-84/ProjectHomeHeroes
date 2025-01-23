@@ -48,7 +48,6 @@ const path = require('path');
 const sequelize = require('./config/connection');
 const apiRoutes = require('./controllers/index.js');
 const userRoutes = require('./controllers/api/users-routes.js');
-const router = require('express').Router();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -60,7 +59,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(authMiddleware);
 
 // Use API routes with a prefix -- the existing of these prefix breaks PROD
-router.use("/api", apiRoutes);  // Make sure to use the /api prefix
+app.use("/api",apiRoutes);  // Make sure to use the /api prefix
 
 // Turn on auth middleware (apply after defining API routes)
 app.use(authMiddleware);
@@ -76,10 +75,7 @@ app.get('*', (req, res) => {
     if (!req.originalUrl.startsWith('/api')) {
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     } else {
-        // Pass to next middleware
-        app.use(apiRoutes); 
-        // Handle your API routes here or pass it to a separate router
-        apiRoutes(req, res, next);
+        res.status(404).send("Not found");
     }
 });
 
