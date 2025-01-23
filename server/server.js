@@ -66,10 +66,20 @@ app.use(authMiddleware);
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-// Catch-all handler to serve React app for non-API routes
 app.get('*', (req, res) => {
     if (!req.originalUrl.startsWith('/api')) {
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    } else {
+        // Pass to next middleware
+        next();
+    }
+});
+
+// Add your other middleware or route handling after the catch-all
+app.use((req, res, next) => {
+    if (req.originalUrl.startsWith('/api')) {
+        // Handle your API routes here or pass it to a separate router
+        apiRoutes(req, res, next);
     } else {
         res.status(404).send("Not found");
     }
