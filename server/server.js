@@ -67,7 +67,7 @@ app.use(authMiddleware);
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
-    if (!req.originalUrl.startsWith('/api')) {
+    if (req.originalUrl.startsWith('/api')) {
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     } else {
         // Pass to next middleware
