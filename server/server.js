@@ -12,14 +12,14 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// // Turn on auth middleware (apply after defining API routes)
-// app.use(authMiddleware);
+// Turn on auth middleware (apply after defining API routes)
+app.use(authMiddleware);
 
 // Use API routes with a prefix
 app.use(apiRoutes);
 
-// Turn on auth middleware (apply after defining API routes)
-app.use(authMiddleware);
+// // Turn on auth middleware (apply after defining API routes)
+// app.use(authMiddleware);
 
 // // Turn on auth middleware (apply after defining API routes)
 // app.use(authMiddleware);
