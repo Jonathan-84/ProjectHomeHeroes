@@ -59,7 +59,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(authMiddleware);
 
 // Use API routes with a prefix
-app.use('/api', apiRoutes);  // Make sure to use the /api prefix
+app.use(apiRoutes);  // Make sure to use the /api prefix
 
 // Turn on auth middleware (apply after defining API routes)
 app.use(authMiddleware);
