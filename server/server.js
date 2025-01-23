@@ -58,7 +58,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authMiddleware);
 
 // Use API routes with a prefix
-app.use('/api', apiRoutes);  // Make sure to use the /api prefix
+// app.use('/api', apiRoutes);  // Make sure to use the /api prefix
+app.use( apiRoutes);  // Make sure to use the /api prefix
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../client/build')));
