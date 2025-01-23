@@ -54,16 +54,17 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// // Turn on auth middleware (apply after defining API routes)
+// app.use(authMiddleware);
+
+// Use API routes with a prefix
+app.use('/api', apiRoutes);  // Make sure to use the /api prefix
+
 // Turn on auth middleware (apply after defining API routes)
 app.use(authMiddleware);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../client/build')));
-// Use API routes with a prefix
-app.use('/api', apiRoutes);  // Make sure to use the /api prefix
-
-// // Serve static files from the React app
-// app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Catch-all handler to serve React app for non-API routes
 app.get('*', (req, res) => {
