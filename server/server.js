@@ -60,7 +60,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Use API routes with a prefix
 app.use('/api', apiRoutes);  // Make sure to use the /api prefix
-app.use( userRoutes); 
 
 // Turn on auth middleware (apply after defining API routes)
 app.use(authMiddleware);
@@ -77,20 +76,22 @@ app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
     } else {
         // Pass to next middleware
-        next();
+        app.use(apiRoutes); 
+        // Handle your API routes here or pass it to a separate router
+        apiRoutes(req, res, next);
     }
 });
 
 // Add your other middleware or route handling after the catch-all
-app.use((req, res, next) => {
-    if (req.originalUrl.startsWith('/api')) {
-        app.use(apiRoutes); 
-        // Handle your API routes here or pass it to a separate router
-        apiRoutes(req, res, next);
-    } else {
-        res.status(404).send("Not found");
-    }
-});
+// app.use((req, res, next) => {
+//     if (req.originalUrl.startsWith('/api')) {
+//         app.use(apiRoutes); 
+//         // Handle your API routes here or pass it to a separate router
+//         apiRoutes(req, res, next);
+//     } else {
+//         res.status(404).send("Not found");
+//     }
+// });
 
 // Health check endpoint
 app.get("/health", (req, res) => {
