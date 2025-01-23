@@ -66,6 +66,10 @@ app.use(authMiddleware);
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../client/build')));
 
+
+//the below change appears to work in dev to enable react to managing routing of pages
+//the problem is that the /api,apiRoutes doesn't work for routing the back end... it causes a 404 error
+
 app.get('*', (req, res) => {
     if (!req.originalUrl.startsWith('/api')) {
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
