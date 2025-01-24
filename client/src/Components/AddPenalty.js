@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect} from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { createReward } from '../util/API';
+import { createPenalty } from '../util/API';
 
 import { UserContext } from "../util/userContext";
 
@@ -46,7 +46,7 @@ const AddPenalty =()=> {
             const user_id = localStorage.getItem('user_id'); 
             
 
-            const user  = await createReward(userFormData);
+            const user  = await createPenalty(userFormData);
 
             navigate("/welcome");
     /// pick up this page and here
