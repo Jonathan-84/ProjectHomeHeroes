@@ -96,7 +96,7 @@ app.get("/health", (req, res) => {
 });
 
 // Turn on connection to DB and server
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ alter: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening on port ' + PORT));
 });
 
