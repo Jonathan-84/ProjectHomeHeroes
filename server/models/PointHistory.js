@@ -41,7 +41,7 @@ PointHistory.init(
     {
     
         sequelize,
-        modelName: 'point-history',
+        modelName: 'pointhistory',
         freezeTableName: true,
         timestamps: false,
         underscored: true,
