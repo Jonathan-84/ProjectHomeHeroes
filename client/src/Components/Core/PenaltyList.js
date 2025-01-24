@@ -76,8 +76,8 @@ return (
 <th>Penalty Name</th>
 <th>Penalty Description</th>
 <th>Penalty Value</th>
-<th>Update Reward</th>
-<th>Delete Reward</th>
+<th>Update Penalty</th>
+<th>Delete Penalty</th>
 </tr>
 </thead>
 {/* <tbody> */}

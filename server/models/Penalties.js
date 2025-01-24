@@ -39,7 +39,7 @@ Penalties.init(
     {
     
         sequelize,
-        modelName: 'rewards',
+        modelName: 'penalties',
         freezeTableName: true,
         timestamps: false,
         underscored: true,
