@@ -6,7 +6,8 @@ import { createHelper, } from '../util/API';
 import { Row, Col } from 'react-bootstrap';
 
 import Boy1 from '../Assets/lilboy1.png';
-import BoyDelete from '../Assets/2boys.png';
+
+
 import Girl3 from '../Assets/lilgirl3.png';
 import leperchaun from '../Assets/leperchaun.jpeg';
 import zeus from '../Assets/zeus.jpeg';
@@ -97,7 +98,7 @@ const AddHelpers = () => {
                         <option value={zeus}>Zeus</option>
                         <option value={superhero}>Superhero</option>
                         <option value={unicorn}>Unicorn</option>
-                        <option value={BoyDelete}>willDelete</option>
+            
                     </select>
        
      
