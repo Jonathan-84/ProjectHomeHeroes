@@ -33,11 +33,23 @@ CREATE TABLE rewards  (
     CONSTRAINT FK_rewards FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE redemptions  (
+CREATE TABLE penalties  (
    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    rewards_redeemed VARCHAR(30) NOT NULL,
-    date_redeemed DATE NOT NULL,
+    penalty_name VARCHAR(30) NOT NULL,
+    penalty_description VARCHAR(60) NOT NULL,
+    penalty_value INT NOT NULL,
+    users_id INT NOT NULL,
+    CONSTRAINT FK_rewards FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE point_history  (
+   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+   change_category VARCHAR(30) NOT NULL,
+    change_details VARCHAR(30) NOT NULL,
+    reward_delivered BOOLEAN NOT NULL,
+    date_changed DATE NOT NULL,
     kids_id INT NOT NULL,
+    CONSTRAINT FK_point_history FOREIGN KEY(kids_id) REFERENCES kids(id) ON DELETE CASCADE
 );
 
 

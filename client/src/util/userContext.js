@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import AuthService from "../util/auth";
 // import {getToken} from "../util/auth";
-import { getTasks, getHelpers,getRewards } from "../util/API"; // Ensure these functions are correctly imported
+import { getTasks, getHelpers,getRewards, getPenalties } from "../util/API"; // Ensure these functions are correctly imported
 
 export const UserContext = createContext();
 
@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
     const [tasks, setTasks] = useState([]);
     const [helpers, setHelpers] = useState([]);
     const [rewards, setRewards] = useState([]);
+    const [penalties, setPenalties] = useState([]);
     // const [redemptions, setRedemptions] = useState([]);
   
 /// use below code only to test the context
@@ -38,6 +39,9 @@ useEffect(() => {
 
             const rewardsResponse = await getRewards(user.data.id, idToken); // Fetch helpers
             setRewards(rewardsResponse); // Store helpers
+
+            const penaltiesResponse = await getPenalties(user.data.id, idToken); // Fetch helpers
+            setRewards(penaltiesResponse); // Store helpers
           } catch (error) {
             console.error('Error fetching tasks or helpers:', error);
           }
@@ -50,6 +54,7 @@ useEffect(() => {
         setTasks([]);
         setHelpers([]);
         setRewards([]);
+        setPenalties([]);
       }
     }
   
@@ -61,9 +66,10 @@ useEffect(() => {
     console.log('Tasks:', tasks);
     console.log('Helpers:', helpers);
     console.log('Rewards:', rewards);
+    console.log('Penalties:', penalties);
 
     return (
-        <UserContext.Provider value={{ profile, tasks, helpers, rewards }}>
+        <UserContext.Provider value={{ profile, tasks, helpers, rewards, penalties }}>
             {children}
         </UserContext.Provider>
     );

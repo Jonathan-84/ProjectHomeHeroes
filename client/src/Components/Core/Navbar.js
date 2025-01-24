@@ -32,6 +32,7 @@ function AppNavbar(){
             Add Tasks
           </NavDropdown.Item>
           <NavDropdown.Item href="/AddRewards">Add Rewards</NavDropdown.Item>
+          <NavDropdown.Item href="/AddPenalty">Add Penalty</NavDropdown.Item>
         </NavDropdown>
         <Nav.Link href="/" onClick={Auth.logout}>Logout</Nav.Link>
         </>

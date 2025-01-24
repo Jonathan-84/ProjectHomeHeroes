@@ -14,10 +14,11 @@ import Cards from "../Components/Core/kidcards";
 import { Link} from 'react-router-dom';
 import Tasklist from "../Components/Core/tasklist";
 import Rewardslist from "../Components/Core/RewardsList";
+import Penaltylist from "../Components/Core/PenaltyList";
 
 const Welcome = () => {
     let me = AuthService.getProfile();
-    const { profile, helpers, tasks, rewards } = useContext(UserContext);
+    const { profile, helpers, tasks, rewards, penalties } = useContext(UserContext);
    
     // const [data, setData] = useState(null);
     // const [kids, setKids] = useState([]); // Initialize as an empty array
@@ -30,11 +31,15 @@ const Welcome = () => {
     const handleCloseRL = () => setShowRL(false); 
     const handleShowRL = () => setShowRL(true);
 
+    const [showPL, setShowPL] = useState(false); 
+    const handleClosePL = () => setShowPL(false); 
+    const handleShowPL = () => setShowPL(true);
+
     useEffect(() => {
 
         async function fetchData() {
             try {
-                if (profile && helpers && tasks && rewards) {
+                if (profile && helpers && tasks && rewards && penalties) {
                     let me = profile;
                     console.log(me);
                     // const response = await getMe(id); // Replace with your API endpoint
@@ -54,7 +59,7 @@ const Welcome = () => {
         }
 
         fetchData();
-    }, [profile, tasks, rewards, helpers,helpers.length]); // Only re-run if profile changes
+    }, [profile, tasks, rewards, penalties, helpers,helpers.length]); // Only re-run if profile changes
 
     // console.log(data);
 
@@ -79,8 +84,19 @@ const Welcome = () => {
                             </Col>
    {/* workalso work on how to space these 2*/}
    <Col>
+                            <Button variant="primary" onClick={handleShowPL}> Show Penalty List </Button> 
+                    <Offcanvas show={showPL} placement="top"  onHide={handleClosePL}> 
+                        <Offcanvas.Header closeButton> 
+                            <Offcanvas.Title>Penalty List</Offcanvas.Title> 
+                            </Offcanvas.Header> 
+                            <Offcanvas.Body> 
+                                <Tasklist />  
+                                </Offcanvas.Body> 
+                            </Offcanvas>
+                </Col>
+   <Col>
                             <Button variant="primary" onClick={handleShow}> Show Task List </Button> 
-                    <Offcanvas show={show} placement="end"  onHide={handleClose}> 
+                    <Offcanvas show={show} placement="top"  onHide={handleClose}> 
                         <Offcanvas.Header closeButton> 
                             <Offcanvas.Title>Task List</Offcanvas.Title> 
                             </Offcanvas.Header> 
@@ -94,8 +110,8 @@ const Welcome = () => {
             <br>
                 </br>
                 <br></br>
-                <Row>
-                    <Col sm={9}>
+                <Row sm={9} xs={1} md={2} >
+                    <Col>
                         <CardGroup>
                             {helpers ? (
                                 helpers.map((kid) => (

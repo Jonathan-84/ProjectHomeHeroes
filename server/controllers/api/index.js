@@ -1,16 +1,17 @@
 const router = require('express').Router();
-
+const penaltiesRoutes= require('./penalties-routes.js');
 const usersRoutes = require('./users-routes.js');
 const tasksRoutes = require('./tasks-routes.js');
 const kidsRoutes= require('./kids-routes.js');
 const rewardsRoutes= require('./rewards-routes.js');
-const redemptionsRoutes= require('./redemptions-routes.js');
+const PointHistoryRoutes= require('./pointhistory-routes.js');
 
 router.use('/users', usersRoutes);
 router.use('/tasks', tasksRoutes);
 router.use('/kids', kidsRoutes);
 router.use('/rewards', rewardsRoutes);
-router.use('/redemptions', redemptionsRoutes);
+router.use('/point-history', PointHistoryRoutes);
+router.use('/penalties', penaltiesRoutes);
 
 
 

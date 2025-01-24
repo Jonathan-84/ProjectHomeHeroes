@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Redemptions} = require('../../models');
+const { Penalties, Users} = require('../../models');
 const { authToken } = require('../../utils/auth');
 
 // // GET ALL /api/rewards
@@ -27,17 +27,22 @@ const { authToken } = require('../../utils/auth');
 //       });
 //   });
 
+// GET One reward  /api/rewards/1
 
-
-// GET One reward  /api/redemptions/users/1/1
 router.get('/users/:userId/:id', (req, res) => {
-  Redemptions.findOne({
+    Penalties.findOne({
       where: {
         id: req.params.id,
         users_id: req.params.userId
       },
-      attributes: ['id','reward_redeemed', 'date_redeemed', 'delivered', 'kids_id'],
-      
+      attributes: ['id','penalty_name', 'penalty_description', 'penalty_value', 'users_id'],
+      include: [
+        {
+          model: Users,
+          attributes: ['name']
+        }
+      ]
+
     })
       .then(dbUserData => {
         if (!dbUserData) {
@@ -52,15 +57,21 @@ router.get('/users/:userId/:id', (req, res) => {
       })
       });
 
-// GET ALL Rewards /api/redemptions/users/1
+// GET ALL Rewards /api/users/1/1
 router.get('/users/:userId', (req, res) => {
-  Redemptions.findAll({
+  Penalties.findAll({
     where: {
       // id: req.params.id,
       users_id: req.params.userId
     },
-    attributes:  ['id','reward_redeemed', 'date_redeemed', 'delivered', 'kids_id'],
-    
+    attributes: ['id','penalty_name', 'penalty_description', 'penalty_value', 'users_id'],
+    include: [
+      {
+        model: Users,
+        attributes: ['name']
+      }
+    ]
+
   })
     .then(dbUserData => {
       if (!dbUserData) {
@@ -75,38 +86,44 @@ router.get('/users/:userId', (req, res) => {
     })
     });     
 
- // get redemptions by kid
- router.get('/users/:userId/:kidsId', (req, res) => {
-  Redemptions.findAll({
-    where: {
-      // id: req.params.id,
-      users_id: req.params.userId,
-      kids_id: req.params.kidsId
-    },
-    attributes:  ['id','reward_redeemed', 'date_redeemed', 'delivered', 'kids_id'],
-    
-  })
-    .then(dbUserData => {
-      if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
-      }
-      res.json(dbUserData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    })
-    });    
+    // GET ALL Rewards /api/users/1/1
+// router.get('/users/:userId/:kidsId', (req, res) => {
+//   Rewards.findAll({
+//     where: {
+//       // id: req.params.id,
+//       users_id: req.params.userId,
+//       kids_id: req.params.kidsId
+//     },
+//     attributes: ['id','rewards_name', 'rewards_description', 'redemption_value', 'users_id'],
+//     include: [
+//       {
+//         model: Users,
+//         attributes: ['name']
+//       }
+//     ]
 
-// POST /api/redeemptions
+//   })
+//     .then(dbUserData => {
+//       if (!dbUserData) {
+//         res.status(404).json({ message: 'No user found with this id' });
+//         return;
+//       }
+//       res.json(dbUserData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     })
+//     });  
+
+// POST /api/rewards
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role:"Uncle"}
-    Redemptions.create({
-      reward_reedemed: req.body.reward_reedemed,
-      date_reedemed: req.body.date_reedemed,
-      delivered: req.body.delivered,
-      kids_id: req.body.kids_id,
+    Penalties.create({
+      penalty_name: req.body.penalty_name,
+      penalty_description: req.body.penalty_description,
+      penalty_value: req.body.penalty_value,
+      users_id: req.body.users_id,
       // tasks_id: req.body.tasks_id
     })
       .then(dbUserData => {
@@ -117,11 +134,11 @@ router.post('/', (req, res) => {
       });
   });
 
-// PUT /api/redemptions/1
+// PUT /api/rewards/1
 router.put('/:id', (req, res) => {
   
     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
-    Redemptions.update(req.body, {
+    Penalties.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -139,9 +156,9 @@ router.put('/:id', (req, res) => {
       });
   });
 
-// DELETE /api/redemptions/1
+// DELETE /api/rewards/1
 router.delete('/:id', (req, res) => {
-    Redemptions.destroy({
+    Penalties.destroy({
       where: {
         id: req.params.id
       }

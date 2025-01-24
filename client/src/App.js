@@ -8,6 +8,7 @@ import Home from '../src/pages/home.js'
 import AddHelpers from '../src/Components/AddHelpers.js';
 import AddTasks from '../src/Components/AddTasks.js';
 import AddRewards from '../src/Components/AddRewards.js';
+import AddPenalty from '../src/Components/AddPenalty.js';
 
 import { Routes, Route } from "react-router-dom";
 import {ProtectedRoute} from './Components/Core/ProtectedRoute.js'
@@ -34,7 +35,7 @@ function App() {
             <Route exact path="/AddTasks" element={<ProtectedRoute> <AddTasks /> </ProtectedRoute> } />
             <Route exact path="/AddHelpers" element={<ProtectedRoute> <AddHelpers /> </ProtectedRoute> } />
             <Route exact path="/AddRewards" element={<ProtectedRoute> <AddRewards /> </ProtectedRoute> } />
-        
+            <Route exact path="/AddPenalty" element={<ProtectedRoute> <AddPenalty /> </ProtectedRoute> } />
             <Route exact path="/login" element={<Login/>} />
         
             <Route path="*" element={<h1 className="title-text main-container">This Page Does Not Exist!</h1>} />

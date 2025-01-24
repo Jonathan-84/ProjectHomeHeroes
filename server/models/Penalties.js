@@ -3,10 +3,10 @@ const sequelize = require('../config/connection');
 
 
 // create our Post model
-class Redemptions extends Model {
+class Penalties extends Model {
 
 }
-Redemptions.init(
+Penalties.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -14,30 +14,32 @@ Redemptions.init(
             primaryKey: true,
             autoIncrement: true
         },
-        reward_redeemed: {
+        penalty_name: {
             type: DataTypes.STRING(30),
             allowNull: false,
          },
-         kids_id: {
+         penalty_description: {
             type: DataTypes.STRING(60),
             allowNull: false,
          },
-         date_reedemed: {
-            type: DataTypes.DATEONLY,
+         penalty_value: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-         },
-         delivered: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
          },
 
 /// Add way to tie kids to the specific users { still need to show this somehow}
-
+         users_id: {
+                type: DataTypes.INTEGER,
+                references: {
+                  model: 'users',
+                  key: 'id'
+                }
+            }
     },
     {
     
         sequelize,
-        modelName: 'redemptions',
+        modelName: 'rewards',
         freezeTableName: true,
         timestamps: false,
         underscored: true,
@@ -45,4 +47,4 @@ Redemptions.init(
     
 }
 );
-    module.exports = Redemptions;
+    module.exports = Penalties;

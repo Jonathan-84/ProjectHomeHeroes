@@ -310,8 +310,8 @@ export const getKidsTasks = async (kids_id, token) => {
   //Redemptions
 
   // create redemption record
-  export const createRedemption = (userData, token) => {
-    return fetch('/api/redemptions', {
+  export const createPointHistory = (userData, token) => {
+    return fetch('/api/point-history', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -323,9 +323,9 @@ export const getKidsTasks = async (kids_id, token) => {
   
 
   // get rewards by user
-  export const getRedemption= async (user_id, kids_id,token) => {
+  export const getPointHistory= async (user_id, kids_id,token) => {
     try {
-      const response = await fetch (`/api/redemptions/users/${user_id}/${kids_id}`, {
+      const response = await fetch (`/api/point-history/users/${user_id}/${kids_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -343,10 +343,10 @@ export const getKidsTasks = async (kids_id, token) => {
   }
   };
 
-  //update a sepecific rewards
-  export const updateRedemption = async (user_id,kids_id, userData) => {
+  //update a sepecific point history
+  export const updatePointHistory = async (point_history_id, userData) => {
     try {
-      const response = await fetch (`/api/redemptions/users/${user_id}/${kids_id}`, {
+      const response = await fetch (`/api/point-history/${point_history_id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -362,10 +362,10 @@ export const getKidsTasks = async (kids_id, token) => {
     throw new Error(`Error fetching redemption data: ${error.message}`);
   }
   };
-//destroy reward
-  export const destroyRedemption = async (id) => {
+//destroy point history
+  export const destroyPointHistory = async (id) => {
     try {
-      const response = await fetch (`/api/redemptions/${id}`, {
+      const response = await fetch (`/api/point-history/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -379,5 +379,77 @@ export const getKidsTasks = async (kids_id, token) => {
     return response.json();
   } catch (error) {
     throw new Error(`Error fetching reddemption data: ${error.message}`);
+  }
+  };
+
+    //Penalties
+
+  // create penalty
+  export const createPenalty = (userData, token) => {
+    return fetch('/api/penalties', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(userData),
+    });
+  };
+  // get penalties by user
+  export const getPenalties = async (user_id,token) => {
+    try {
+      const response = await fetch (`/api/penalties/users/${user_id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error fetching user data');
+    }
+
+    return response.json();
+  } catch (error) {
+    throw new Error(`Error fetching user data: ${error.message}`);
+  }
+  };
+  //update a sepecific penalty
+  export const updatePenalties = async (penalties_id, userData) => {
+    try {
+      const response = await fetch (`/api/penalties/${penalties_id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        // authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(userData),
+    });
+    if (!response.ok) {
+      throw new Error('Error fetching rewards data');
+    }
+    return response.json();
+  } catch (error) {
+    throw new Error(`Error fetching rewards data: ${error.message}`);
+  }
+  };
+//destroy penalty
+  export const destroyPenalty = async (id) => {
+    try {
+      const response = await fetch (`/api/penalties/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        // authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Error fetching user data');
+    }
+
+    return response.json();
+  } catch (error) {
+    throw new Error(`Error fetching user data: ${error.message}`);
   }
   };
