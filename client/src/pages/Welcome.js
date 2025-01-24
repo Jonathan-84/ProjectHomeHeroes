@@ -90,7 +90,7 @@ const Welcome = () => {
                             <Offcanvas.Title>Penalty List</Offcanvas.Title> 
                             </Offcanvas.Header> 
                             <Offcanvas.Body> 
-                                <Tasklist />  
+                                <Penaltylist />  
                                 </Offcanvas.Body> 
                             </Offcanvas>
                 </Col>
