@@ -41,7 +41,7 @@ useEffect(() => {
             setRewards(rewardsResponse); // Store helpers
 
             const penaltiesResponse = await getPenalties(user.data.id, idToken); // Fetch helpers
-            setRewards(penaltiesResponse); // Store helpers
+            setPenalties(penaltiesResponse); // Store helpers
           } catch (error) {
             console.error('Error fetching tasks or helpers:', error);
           }

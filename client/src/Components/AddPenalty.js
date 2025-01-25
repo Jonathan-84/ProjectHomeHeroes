@@ -16,9 +16,9 @@ const AddPenalty =()=> {
         const [validated] = useState(false);
         // set state for alert
         const [showAlert, setShowAlert] = useState(false);
-        const { helpers } = useContext(UserContext);
+        // const { helpers } = useContext(UserContext);
         const navigate = useNavigate();
-        console.log(helpers)
+        // console.log(helpers)
     
         useEffect(() => { 
             const user_id = localStorage.getItem('user_id');
