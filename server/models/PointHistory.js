@@ -41,7 +41,7 @@ PointHistory.init(
     {
     
         sequelize,
-        modelName: 'redemptions',
+        modelName: 'point_history',
         freezeTableName: true,
         timestamps: false,
         underscored: true,

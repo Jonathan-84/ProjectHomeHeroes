@@ -2,8 +2,6 @@ DROP DATABASE IF EXISTS choresDB;
 
 CREATE DATABASE choresDB;
 
-ENGINE=InnoDB;
-
 USE choresDB;
 
 CREATE TABLE users (
@@ -19,7 +17,9 @@ CREATE TABLE kids  (
    id INTEGER PRIMARY KEY AUTO_INCREMENT,
     child_name VARCHAR(30) NOT NULL,
     avatar VARCHAR(75) NOT NULL,
-    current_points INT NOT NULL,
+    current_points INT,
+    annual_points INT,
+    target_reward INT,
     users_id INT NOT NULL,
     CONSTRAINT FK_kids FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
 );
@@ -39,7 +39,7 @@ CREATE TABLE penalties  (
     penalty_description VARCHAR(60) NOT NULL,
     penalty_value INT NOT NULL,
     users_id INT NOT NULL,
-    CONSTRAINT FK_rewards FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
+    CONSTRAINT FK_penalties FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE point_history  (
@@ -60,6 +60,3 @@ CREATE TABLE tasks (
     kids_id INT NOT NULL,
     CONSTRAINT FK_tasks FOREIGN KEY(kids_id) REFERENCES kids(id) ON DELETE CASCADE
 );
-
-
-

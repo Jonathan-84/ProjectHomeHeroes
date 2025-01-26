@@ -6,13 +6,7 @@ const { authToken } = require('../../utils/auth');
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method)
     Kids.findAll({
-      attributes: [
-        'id', 
-        'avatar',
-        'child_name', 
-        'current_points'
-     
-      ],
+      attributes: ['id','child_name', 'avatar', 'current_points', 'users_id' , 'annual_points', 'target_reward'],
       include: [
         {
           model: Users,
@@ -38,7 +32,7 @@ router.get('/users/:userId/:id', (req, res) => {
         id: req.params.id,
         users_id: req.params.userId
       },
-      attributes: ['id','child_name', 'avatar', 'current_points', 'users_id'],
+      attributes: ['id','child_name', 'avatar', 'current_points', 'users_id' , 'annual_points', 'target_reward'],
       include: [
         {
           model: Users,
@@ -71,7 +65,7 @@ router.get('/users/:userId', (req, res) => {
       // id: req.params.id,
       users_id: req.params.userId
     },
-    attributes: ['id','child_name', 'avatar', 'current_points', 'users_id'],
+    attributes: ['id','child_name', 'avatar', 'current_points', 'users_id' , 'annual_points', 'target_reward'],
     include: [
       {
         model: Users,
@@ -105,6 +99,8 @@ router.post('/', (req, res) => {
       avatar: req.body.avatar,
       current_points: req.body.current_points,
       users_id: req.body.users_id,
+      annual_points: 0,
+      target_reward: req.body.target_reward
       // tasks_id: req.body.tasks_id
     })
       .then(dbUserData => {

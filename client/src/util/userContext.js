@@ -33,6 +33,8 @@ useEffect(() => {
           
             const tasksResponse = await getTasks(token); // Fetch tasks
             setTasks(tasksResponse); // Store tasks
+
+            console.log(helpers)
   
             const helpersResponse = await getHelpers(user.data.id, idToken); // Fetch helpers
             setHelpers(helpersResponse); // Store helpers

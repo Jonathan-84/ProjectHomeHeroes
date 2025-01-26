@@ -107,7 +107,7 @@ const AddRewards =()=> {
         <Form.Label htmlFor='redemption_value'> Redemption value</Form.Label>
         <Form.Control
             type='text'
-            placeholder='redemption value'
+            placeholder='redemption value without commas'
             name='redemption_value'
             onChange={handleInputChange}
             value={userFormData.redemption_value}

@@ -26,6 +26,14 @@ Kids.init(
             type: DataTypes.INTEGER,
             allowNull: true,
          },
+         annual_points: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+         },
+         target_reward: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+         },
          
 /// Add way to tie kids to the specific users { still need to show this somehow}
          users_id: {
