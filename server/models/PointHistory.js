@@ -23,7 +23,7 @@ PointHistory.init(
             allowNull: false,
          },
          kids_id: {
-            type: DataTypes.STRING(60),
+            type: DataTypes.INTEGER,
             allowNull: false,
          },
          date_changed: {
