@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { PointHistory} = require('../../models/PointHistory');
-const { authToken } = require('../../utils/auth');
+const { PointHistory, Kids} = require('../../models');
+// const { authToken } = require('../../utils/auth');
 
-// // GET ALL /api/rewards
+
 // router.get('/', (req, res) => {
 //     // Access our User model and run .findAll() method)
 //     Rewards.findAll({
@@ -30,27 +30,27 @@ const { authToken } = require('../../utils/auth');
 
 
 // GET One reward  /api/redemptions/users/1/1
-router.get('/users/:userId/:id', (req, res) => {
-  PointHistory.findOne({
-      where: {
-        id: req.params.id,
-        users_id: req.params.userId
-      },
-      attributes: ['id','change_category', 'change_details','date_changed', 'reward_delivered', 'kids_id'],
+// router.get('/users/:userId/:id', (req, res) => {
+//   PointHistory.findOne({
+//       where: {
+//         id: req.params.id,
+//         users_id: req.params.userId
+//       },
+//       attributes: ['id','change_category', 'change_details','date_changed', 'reward_delivered', 'kids_id'],
       
-    })
-      .then(dbUserData => {
-        if (!dbUserData) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-        res.json(dbUserData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      })
-      });
+//     })
+//       .then(dbUserData => {
+//         if (!dbUserData) {
+//           res.status(404).json({ message: 'No user found with this id' });
+//           return;
+//         }
+//         res.json(dbUserData);
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       })
+//       });
 
 // GET ALL Rewards /api/redemptions/users/1
 router.get('/users/:userId', (req, res) => {
@@ -76,28 +76,54 @@ router.get('/users/:userId', (req, res) => {
     });     
 
  // get redemptions by kid
- router.get('/users/:userId/:kidsId', (req, res) => {
-  PointHistory.findAll({
-    where: {
-      // id: req.params.id,
-      users_id: req.params.userId,
-      kids_id: req.params.kidsId
-    },
-    attributes: ['id','change_category', 'change_details','date_changed', 'reward_delivered', 'kids_id'],
+ // GET Point History by User ID and Kids ID /api/redemptions/users/:userId/kids/:kidsId
+ router.get('/kids/:kidsId', async (req, res) => {
+  try {
+    // console.log('Received userId:', req.params.userId);
+    console.log('Received kidsId:', req.params.kidsId);
+
+    const pointHistories = await PointHistory.findAll({
+      where: {
+        // users_id: req.params.userId,
+        kids_id: req.params.kidsId,
+      },
+      attributes: ['id', 'change_category', 'change_details', 'date_changed', 'reward_delivered', 'kids_id'],
+
+    });
+
+    if (!pointHistories) {
+      return res.status(404).json({ message: 'No records found for the specified user and kids ID' });
+    }
+
+    res.json(pointHistories);
+  } catch (error) {
+    console.error('Error fetching point histories:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+ 
+//  router.get('/users/:userId/:kidsId', (req, res) => {
+//   PointHistory.findAll({
+//     where: {
+//       // id: req.params.id,
+//       users_id: req.params.userId,
+//       kids_id: req.params.kidsId
+//     },
+//     attributes: ['id','change_category', 'change_details','date_changed', 'reward_delivered', 'kids_id'],
     
-  })
-    .then(dbUserData => {
-      if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
-      }
-      res.json(dbUserData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    })
-    });    
+//   })
+//     .then(dbUserData => {
+//       if (!dbUserData) {
+//         res.status(404).json({ message: 'No user found with this id' });
+//         return;
+//       }
+//       res.json(dbUserData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     })
+//     });    
 
 // POST /api/redeemptions
 router.post('/', (req, res) => {

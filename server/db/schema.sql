@@ -17,8 +17,8 @@ CREATE TABLE kids  (
    id INTEGER PRIMARY KEY AUTO_INCREMENT,
     child_name VARCHAR(30) NOT NULL,
     avatar VARCHAR(75) NOT NULL,
-    current_points INT,
-    annual_points INT,
+    current_points INT NOT NULL,
+    annual_points INT NOT NULL,
     target_reward INT,
     users_id INT NOT NULL,
     CONSTRAINT FK_kids FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE

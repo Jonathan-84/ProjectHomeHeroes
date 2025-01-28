@@ -1,0 +1,15 @@
+{
+    "short_name": "Chore",
+    "name": "Choregasboard",
+    "icons": [
+      {
+        "src": "favi-16x16.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      }
+    ],
+  
+    "start_url": ".",
+    "display": "standalone"
+  }
+  

@@ -22,7 +22,8 @@ const PointHistory = require("./PointHistory");
  Kids.hasMany(Tasks, {
     foreignKey: "kids_id",
   });
-  Kids.hasOne(PointHistory, {
+  
+  Kids.hasMany(PointHistory, {
     foreignKey: "kids_id",
   });
 
@@ -60,4 +61,4 @@ const PointHistory = require("./PointHistory");
   foreignKey: 'kids_id'
   });*/
 
-module.exports = { Users, Kids, Tasks, Rewards, Penalties };
+module.exports = { Users, Kids, Tasks, Rewards, Penalties, PointHistory };

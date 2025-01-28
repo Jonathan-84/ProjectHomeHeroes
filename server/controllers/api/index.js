@@ -4,13 +4,13 @@ const usersRoutes = require('./users-routes.js');
 const tasksRoutes = require('./tasks-routes.js');
 const kidsRoutes= require('./kids-routes.js');
 const rewardsRoutes= require('./rewards-routes.js');
-const PointHistoryRoutes= require('./pointhistory-routes.js');
+const pointHistoryRoutes= require('./pointhistory-routes.js');
 
 router.use('/users', usersRoutes);
 router.use('/tasks', tasksRoutes);
 router.use('/kids', kidsRoutes);
 router.use('/rewards', rewardsRoutes);
-router.use('/point-history', PointHistoryRoutes);
+router.use('/point-history', pointHistoryRoutes);
 router.use('/penalties', penaltiesRoutes);
 
 

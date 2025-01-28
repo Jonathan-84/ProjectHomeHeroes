@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import {  Modal, Button, Table } from 'react-bootstrap';
 import { updateHelper, destroyTask } from '../../util/API';
 
-const KidsTaskModal = ({ tasks, handleClose, show, current_points }) => {
+const KidsTaskModal = ({ tasks, handleClose, show, current_points, annual_points }) => {
   const [currentPoints, setCurrentPoints] = useState(current_points);
+  const [annualPoints, setAnnualPoints] = useState(annual_points);
   const [updatedTasks, setUpdatedTasks] = useState(tasks);
 
   useEffect(() => {
@@ -36,7 +37,8 @@ const KidsTaskModal = ({ tasks, handleClose, show, current_points }) => {
   
       if (token && kids_id && chosenTask && previous_points !== undefined && taskPoints !== undefined) {
         let totalPoints = previous_points + taskPoints;
-        let updated_points = { current_points: totalPoints };
+        let newAnnual = annual_points + taskPoints;
+        let updated_points = { current_points: totalPoints, annual_points: newAnnual };
   
         console.log("Updated Points Object:", updated_points);
         console.log("Kids ID for Update:", kids_id);
@@ -48,6 +50,7 @@ const KidsTaskModal = ({ tasks, handleClose, show, current_points }) => {
         // Update the tasks state
         setUpdatedTasks(prevTasks => prevTasks.filter(task => task.id !== chosenTask));
         setCurrentPoints(totalPoints);
+        setAnnualPoints(annualPoints + taskPoints);
       } else {
         console.warn('ID token or kids ID is missing');
       }

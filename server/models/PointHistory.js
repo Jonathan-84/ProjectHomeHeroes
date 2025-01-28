@@ -22,13 +22,10 @@ PointHistory.init(
             type: DataTypes.STRING(30),
             allowNull: false,
          },
-         kids_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-         },
          date_changed: {
             type: DataTypes.DATEONLY,
             allowNull: false,
+            defaultValue: DataTypes.NOW, // Set default value to the current date
          },
          reward_delivered: {
             type: DataTypes.BOOLEAN,
@@ -36,7 +33,13 @@ PointHistory.init(
          },
 
 /// Add way to tie kids to the specific users { still need to show this somehow}
-
+kids_id: {
+   type: DataTypes.INTEGER,
+   references: {
+     model: 'kids',
+     key: 'id'
+   }
+ }
     },
     {
     
@@ -45,7 +48,13 @@ PointHistory.init(
         freezeTableName: true,
         timestamps: false,
         underscored: true,
-        engine: 'InnoDB' // Specify the default engine here
+        engine: 'InnoDB' ,// Specify the default engine here,
+        hooks: {
+         beforeUpdate: (pointHistory, options) => {
+           pointHistory.date_changed = new Date(); // Update date_changed to the current date
+         }
+       }
+      
     
 }
 );

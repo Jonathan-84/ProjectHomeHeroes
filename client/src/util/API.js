@@ -268,6 +268,26 @@ export const getKidsTasks = async (kids_id, token) => {
   }
   };
 
+  export const getReward = async (users_id, rewardId) => {
+    try {
+      const response = await fetch (`/api/rewards/users/${users_id}/${rewardId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error fetching user data');
+    }
+
+    return response.json();
+  } catch (error) {
+    throw new Error(`Error fetching user data: ${error.message}`);
+  }
+  };
+
   //update a sepecific rewards
   export const updateRewards = async (rewards_id, userData) => {
     try {
@@ -323,13 +343,13 @@ export const getKidsTasks = async (kids_id, token) => {
   
 
   // get rewards by user
-  export const getPointHistory= async (user_id, kids_id,token) => {
+  export const getPointHistory= async ( kids_id) => {
     try {
-      const response = await fetch (`/api/point-history/users/${user_id}/${kids_id}`, {
+      const response = await fetch (`/api/point-history/kids/${kids_id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`,
+        // authorization: `Bearer ${token}`,
       },
     });
 

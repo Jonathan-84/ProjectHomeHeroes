@@ -24,11 +24,13 @@ Kids.init(
          },
          current_points: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
+            defaultValue: 0,
          },
          annual_points: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
+            defaultValue: 0,
          },
          target_reward: {
             type: DataTypes.INTEGER,
